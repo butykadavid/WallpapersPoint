@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@500;700&display=swap');
+
+.navBar {
+    width: 100%;
+    height: 15vh;
+    background: #252525;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-family: Roboto, sans-serif;
+}
+
+.navBar .search {
+    width: 35%;
+    height: 100%;
+
+    padding: 1em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navBar .menu {
+    width: 50%;
+    height: 100%;
+
+    padding: 1em;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.navBar .menu a {
+    margin: 0px 20px;
+
+    font-size: 1.3em;
+    color: #656565;
+    font-weight: 700;
+
+    transition: 0.25s ease-in-out;
+}
+
+.navBar .menu a:hover {
+    color: #d5d5d5;
+}
+
+
+.navBar .menu .logIn {
+    margin-right: 0px;
+    padding: 3px 45px;
+
+    color: #d5d5d5;
+    border: 3px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, #2EFF9B, #00EFD2);
+
+}
+
+.navBar .menu .logIn:hover {
+    color: #252525;
+    background: linear-gradient(to right, #2EFF9B, #00EFD2);
+}
+
+.navBar .menu .loggedIn {
+    margin-right: 0px;
+    color: #2EFF9B;
+
+    cursor: pointer;
+
+    transition: 0.25s ease-in-out;
+}
+
+.navBar .menu .loggedIn:hover {
+    color: #2EFF9B;
+}
+
+.dropdown {
+    position: relative;
+    z-index: 10;
+}
+
+.dropdowncontent {
+    display: none;
+
+    width: 100%;
+
+    margin: 0;
+    margin-left: 5px;
+
+    position: absolute;
+
+    background: #252525;
+    border-bottom: 3px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, #2EFF9B, #00EFD2);
+}
+
+.dropdowncontent .item {
+    color: #656565;
+    font-size: 0.9em !important;
+    text-decoration: none;
+    cursor: pointer;
+
+    margin: 10px 0px !important;
+}
+
+.dropdown:hover .dropdowncontent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.navBar .search .searchBar {
+    width: 100%;
+    height: 45%;
+
+    border: 3px solid #656565;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navBar .search .searchBar:focus-within {
+    border: 3px solid #959595;
+}
+
+.navBar .search .popularSearch {
+    width: 100%;
+    height: 45%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navBar .search .searchBar button {
+    height: 100%;
+    width: 6%;
+
+    background: transparent;
+    border: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navBar .search .searchBar button img {
+    width: 100%;
+}
+
+.navBar .search .searchBar input {
+    height: 100%;
+    width: 94%;
+
+    color: #656565;
+    background: transparent;
+    border: none;
+    font-size: medium;
+}
+
+.navBar .search .searchBar input:active {
+    outline: none;
+}
+
+.navBar .search .searchBar input:focus {
+    outline: none;
+}
+
+.navBar .search .searchBar input::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #454545;
+    /* Firefox */
+    opacity: 1; 
+}
+
+.navBar .search .searchBar input::-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #454545;
+}
+
+.navBar .search .searchBar input::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #454545;
+}
+
+.navBar .search .popularSearch h3 {
+    color: #656565;
+}
+
+.navBar .search .popularSearch div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.navBar .search .popularSearch div a {
+    color: #656565;
+    margin: 0px 5px;
+    font-size: small;
+}
+
+.navBar .search .popularSearch div a:last-child {
+    margin-right: 0px;
+}

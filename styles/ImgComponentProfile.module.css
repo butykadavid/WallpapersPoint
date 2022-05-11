@@ -1,0 +1,90 @@
+.card{
+    width: 100%;
+    height: fit-content;
+
+    margin-bottom: 5%;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 3px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, #2EFF9B, #00EFD2);
+}
+
+.card img{
+    width: 100%;
+
+    transition: 0.25s ease-in-out;
+}
+
+.card .imgOverlap{
+    opacity: 0;
+
+    position: absolute;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.25s ease-in-out;
+}
+
+.card .imgOverlap a{
+    width: 15%;
+
+    margin: 15px;
+    padding: 4%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(to right, #252525, #252525);
+    border: 3px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, #2EFF9B, #00EFD2);
+
+    transition: 0.25s ease-in-out;
+}
+
+.card .imgOverlap .rprt{
+    border: 3px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, orangered, crimson);
+}
+
+.card .imgOverlap a:hover{
+    background: linear-gradient(to right, #2EFF9B, #00EFD2);
+}
+
+.card .imgOverlap .rprt:hover{
+    background: linear-gradient(to right, orangered, crimson);
+
+    transition: 0.25s ease-in-out;
+}
+
+.card .imgOverlap a:hover img{
+    filter: brightness(0);
+}
+
+.card:hover .imgOverlap{
+    opacity: 100;
+}
+
+.card:hover img{
+    filter: brightness(0.5);
+}
+
+.noImg:first-child{
+    margin-top: 10px;
+}
+
+.noImg {
+    color: #656565;
+    margin: 0;
+}

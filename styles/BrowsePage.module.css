@@ -1,0 +1,15 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.imgContainer {
+    width: 100vw;
+    height: fit-content;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2%;
+    
+    padding: 3%;
+}

@@ -1,0 +1,39 @@
+.card{
+    margin: auto;
+    width: 500px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 25px;
+    position: relative;
+    background: #252525;
+}
+
+.ind__container{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card__title{
+    font-family: sans-serif;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 25px;
+    font-weight: 100;
+    color: #efefef;
+}
+
+.card__image{
+    width: 100%;
+    max-width: 80vw;
+    margin: auto;
+}

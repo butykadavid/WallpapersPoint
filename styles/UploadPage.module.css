@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@500;700&display=swap');
+
+.container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.middleContainer {
+    width: 100%;
+    height: 85%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.middleContainer div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.middleContainer div h1 {
+    font-size: 90px;
+    font-family: Montserrat, sans-serif;
+    color: #2EFF9B;
+
+    margin-top: -10%;
+}
+
+.inputButton {
+    margin-top: 25px;
+    padding: 5px 30px;
+
+    font-size: 1.3em;
+    color: white;
+    background: #454545;
+
+    transition: 0.25s ease-in-out;
+}
+
+.inputButton:hover {
+    background: #656565;
+}
+
+.middleContainer div span {
+    margin-top: 5px;
+    margin-bottom: 25px;
+    padding: 0;
+
+    color: #656565;
+}
+
+.hashtagsText {
+    margin-bottom: 25px;
+
+    background: transparent;
+    border: 3px solid #656565;
+    color: #656565;
+
+    resize: none;
+
+    transition: 0.25s ease-in-out;
+}
+
+.hashtagsText:focus {
+    border: 3px solid #d5d5d5;
+    outline: none;
+
+    color: #d5d5d5;
+}
+
+.uploadButton {
+    padding: 5px 45px;
+
+    font-weight: 600;
+    font-size: 1.3em;
+    color: #d5d5d5;
+    background: transparent;
+    border: 3px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, #2EFF9B, #00EFD2);
+    transition: 0.25s ease-in-out;
+}
+
+.uploadButton:hover {
+    background: linear-gradient(to right, #2EFF9B, #00EFD2);
+    color: #252525;
+}

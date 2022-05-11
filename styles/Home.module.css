@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@500;700&display=swap');
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.container .titleContainer{
+  width: 100vw;
+  height: 45%;
+
+  padding-left: 10%;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.container .titleContainer h1{
+  margin: 0;
+  margin-left: -15px;
+
+  font-size: 90px;
+  font-family: Montserrat, sans-serif;
+  color: #252525;
+}
+
+.container .titleContainer h3{
+  margin: 0;
+
+  font-size: 30px;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  color: #252525;
+}
+
+.container .titleContainer a{
+  margin-top: 20px;
+  padding: 3px 45px;
+
+  font-size: 20px;
+  font-weight: 900;
+  font-family: Roboto;
+  color: #d5d5d5;
+  background: #252525;
+  border: 3px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to right, #2EFF9B, #00EFD2);
+
+  transition: 0.25s ease-in-out;
+}
+
+.container .titleContainer a:hover{
+  color: #252525;
+  background: linear-gradient(to right, #2EFF9B, #00EFD2);
+}
+
+.bottomContainer{
+  width: 100vw;
+  height: 40%;
+
+  background: rgba(0, 0, 0, 0.6);
+
+  padding-top: 3%;
+  padding-left: 10%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  position: relative;
+}
+
+.bottomContainer::-webkit-scrollbar{
+  display: none;
+}
+
+.bottomContainer h3{
+  position: fixed;
+  bottom: 30%;
+
+  color: #d5d5d5;
+  font-weight: 700;
+  font-family: Roboto, sans-serif;
+  font-size: x-large;
+}
+
+.bottomContainer .innerContainer{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.bottomContainer .innerContainer a{
+  height: 9.5%;
+
+  margin-right: 10%;
+
+  border: 3px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to right, #2EFF9B, #00EFD2);
+}
+
+.bottomContainer .innerContainer a img{
+  height: 100%;
+}
+
+.bottomContainer .innerContainer div{
+  width: 10%;
+  color: transparent;
+}
+
+
+
