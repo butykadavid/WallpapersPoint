@@ -13,6 +13,7 @@ import { query, getDocs, collection, limit, orderBy } from 'firebase/firestore';
 export default function Home({ bottomImages, bg }) {
 
   return (
+    
     <div className={styles.container} style={{
       background: `linear-gradient(rgba(0, 255, 172, 0.5), rgba(0, 255, 253, 0.5)), url(${bg.displayUrl})`,
       backgroundAttachment: 'fixed',
@@ -63,6 +64,7 @@ export default function Home({ bottomImages, bg }) {
       </div>
 
     </div >
+
   )
 
 }

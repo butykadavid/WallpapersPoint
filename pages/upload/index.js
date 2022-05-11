@@ -4,7 +4,7 @@ import styles from "../../styles/UploadPage.module.css"
 
 import Script from "next/script"
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, createRef } from "react";
 
 import { v4 as uuidv4 } from 'uuid'
 
@@ -19,6 +19,7 @@ const uploadPage = () => {
     const file = null;
     const metadata = [];
     var hashtags = [];
+    const fileChosen = createRef()
     const [user] = useAuthState(auth)
     const [isInProgress, setProgress] = useState(false)
 
@@ -82,6 +83,7 @@ const uploadPage = () => {
     const handleSelected = e => {
 
         try {
+            fileChosen.current.innerText = e.target.files[0].name
             file = e.target.files[0]
             metadata = {
                 contentType: e.target.files[0].type
@@ -105,8 +107,6 @@ const uploadPage = () => {
 
     }
 
-    useEffect(() => {
-    }, [isInProgress])
 
     if (isInProgress == false) {
 
@@ -149,7 +149,7 @@ const uploadPage = () => {
                                 <h1>Upload image</h1>
                                 <input id="fileButton" type="file" onChange={handleSelected} hidden />
                                 <label className={styles.inputButton} htmlFor="fileButton">Choose file</label>
-                                <span id="fileChosen"></span>
+                                <span id="fileChosen" ref={fileChosen}></span>
                                 <textarea className={styles.hashtagsText} rows="5" placeholder="#hashtag #dog #cute" onChange={handleText}></textarea>
                                 <button className={styles.uploadButton} onClick={uploadImg}>Upload</button>
 
@@ -159,14 +159,13 @@ const uploadPage = () => {
 
                     </div>
 
-                    <Script src="/fileUpload.js" />
-
                 </>
             );
 
         }
 
     } else {
+
         return (
 
             <div className={styles.container}>
@@ -184,6 +183,7 @@ const uploadPage = () => {
             </div>
 
         )
+
     }
 
 

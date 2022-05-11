@@ -54,6 +54,8 @@
     margin-right: 0px;
     padding: 3px 45px;
 
+    cursor: pointer;
+
     color: #d5d5d5;
     border: 3px solid;
     border-image-slice: 1;
