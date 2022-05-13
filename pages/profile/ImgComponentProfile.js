@@ -16,6 +16,7 @@ const ImgComponentProfile = ({ images }) => {
     const [user] = useAuthState(auth)
     const [isInProgress, setProgress] = useState(false)
 
+    // deleting image from storage
     const deleteFromStorage = async (img) => {
 
         setProgress(true)
@@ -35,6 +36,7 @@ const ImgComponentProfile = ({ images }) => {
 
     }
 
+    // deleting image from '_images' array
     const deleteFromLocal = (img) => {
 
         var index = _images.indexOf(img);
@@ -44,6 +46,7 @@ const ImgComponentProfile = ({ images }) => {
 
     }
 
+    // deleting image from the 'images' collection in the database
     const deleteFromImages = async (id) => {
 
         var docId;
@@ -66,6 +69,7 @@ const ImgComponentProfile = ({ images }) => {
 
     }
 
+    // deleting image from the current user's 'images' field in the database
     const deleteFromUser = async (id) => {
 
         var docId;
@@ -94,7 +98,7 @@ const ImgComponentProfile = ({ images }) => {
 
     }
 
-
+    // if deleting is in progress page displays a loading screen
     if (isInProgress == false) {
 
         if (_images.length > 0) {

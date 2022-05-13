@@ -9,6 +9,7 @@ const LabelComponent = ({tags}) => {
 
             return (
 
+                // clicking on a category is the same as searching for that word
                 <Link href={{
                     pathname: '/browse',
                     query: { search: tag }

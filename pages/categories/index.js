@@ -35,6 +35,7 @@ const categoriesPage = ({ tags }) => {
 
 export const getStaticProps = async () => {
 
+    // get categories from db
     const q = query(collection(db, "tags"));
     const fetchedDocs = await getDocs(q)
 

@@ -14,6 +14,7 @@ export default function Home({ bottomImages, bg }) {
 
   return (
     
+    // div wrapping whole page with dynamic gackground
     <div className={styles.container} style={{
       background: `linear-gradient(rgba(0, 255, 172, 0.5), rgba(0, 255, 253, 0.5)), url(${bg.displayUrl})`,
       backgroundAttachment: 'fixed',
@@ -32,6 +33,8 @@ export default function Home({ bottomImages, bg }) {
 
         <h1>WallpapersPoint</h1>
         <h3>Find your new favourite picture<br />to decorate your device</h3>
+
+        {/* button to download the current background*/}
         <Link
           href={{
             pathname: `browse/${bg.uid} `,
@@ -55,6 +58,7 @@ export default function Home({ bottomImages, bg }) {
         <h3>All time top 5</h3>
         <div className={styles.innerContainer}>
 
+          {/* component displaying top 5 images by likes on the bottom of the page */}
           <TopImagesComponent images={bottomImages} />
           <div>Hi!</div>
 
@@ -71,6 +75,8 @@ export default function Home({ bottomImages, bg }) {
 
 export const getServerSideProps = async () => {
 
+  // get the all time top 6 images
+  // 6th image is background for now
   const q = query(collection(db, "images"), orderBy('likes', 'desc'), limit(6));
   const fetchedDocs = await getDocs(q)
 

@@ -19,6 +19,7 @@ const uploadPage = () => {
     const file = null;
     const metadata = [];
     var hashtags = [];
+    // span to display selected file's name
     const fileChosen = createRef()
     const [user] = useAuthState(auth)
     const [isInProgress, setProgress] = useState(false)
@@ -27,6 +28,7 @@ const uploadPage = () => {
 
         setProgress(true)
 
+        // creating a unique id
         const imgUid = uuidv4()
 
         const storageRef = ref(storage, 'images/' + imgUid)
@@ -35,8 +37,11 @@ const uploadPage = () => {
 
             var docId;
 
+            // upload image
             await uploadBytes(storageRef, file, metadata).then(async () => {
 
+                // get additional info about image
+                //---
                 const displayUrl = await getDownloadURL(storageRef).then((url) => {
                     return url
                 })
@@ -44,7 +49,9 @@ const uploadPage = () => {
                 const downloadUrl = await getMetadata(storageRef).then((metadata) => {
                     return "https://storage.googleapis.com/download/storage/v1/b/wallpaperspoint-36d6c.appspot.com/o/images%2F" + imgUid + "?generation=" + metadata.generation + "&alt=media"
                 })
+                //---
 
+                // add image info to 'images' collection in database
                 await addDoc(collection(db, "images"), {
                     uid: imgUid,
                     displayUrl: displayUrl,
@@ -59,6 +66,8 @@ const uploadPage = () => {
                     reports: 0
                 });
 
+                // refreshing 'users' collection too
+                //---
                 const q = query(collection(db, "users"), where("uid", "==", user.uid));
                 const docs = await getDocs(q);
 
@@ -72,6 +81,7 @@ const uploadPage = () => {
                 await updateDoc(userRef, {
                     images: arrayUnion(imgUid)
                 });
+                //---
 
 
                 setProgress(false)
@@ -80,27 +90,37 @@ const uploadPage = () => {
         }
     }
 
+    // handling file selection
     const handleSelected = e => {
 
         try {
+
+            // set span's text to the selected file's name
             fileChosen.current.innerText = e.target.files[0].name
+
+            // preparing the file to be sent
             file = e.target.files[0]
             metadata = {
                 contentType: e.target.files[0].type
             }
+
         } catch (err) {
             console.log(err)
         }
 
     }
 
+    // handling text of hashtags textarea
     const handleText = e => {
 
         try {
+
+            // get keywords with hashtags from textarea
             hashtags.splice(0, hashtags.length)
             e.target.value.split(' ').forEach(element => {
                 hashtags.push(element.trim())
             });
+
         } catch (err) {
             console.log(err)
         }

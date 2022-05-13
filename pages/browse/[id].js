@@ -6,6 +6,7 @@ const ImgPage = ({ displayUrl, downloadUrl, uploaderEmail, hashtags, likes, repo
 
     const [imgDims, setImgDims] = useState({})
 
+    // get image resolution after it's loaded
     const getImgDimensions = (e) => {
         setImgDims({
             width: e.target.naturalWidth,
@@ -37,6 +38,7 @@ const ImgPage = ({ displayUrl, downloadUrl, uploaderEmail, hashtags, likes, repo
 
 export const getServerSideProps = async (context) => {
 
+    // get values from clicked image
     return {
         props: {
             displayUrl: context.query.displayUrl,

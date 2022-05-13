@@ -11,6 +11,7 @@ const NavBar = () => {
     const [user] = useAuthState(auth)
     const router = useRouter()
 
+    // start search on pressing enter
     const handleKeyUp = (e) => {
         if (e.key === "Enter") {
             router.push({
@@ -57,6 +58,8 @@ const NavBar = () => {
                 <a href="/browse">Browse</a>
                 <a href="/categories">Categories</a>
                 <a href="/about">About</a>
+
+                {/* if user is signed in display user menu */}
                 {user == null || user == [] ?
                     <a className={styles.logIn} onClick={signInWithGoogle}>Log In</a>
                     :

@@ -16,9 +16,13 @@ const ImgComponent = ({ images }) => {
     const [reportedImgs, setReportedImgs] = useState([])
 
 
+    // getting data from user so we know what he liked or reported already
     const getData = async () => {
+
         if (user != null) {
+
             try {
+
                 var docId;
 
                 const q = query(collection(db, "users"), where("uid", "==", user.uid));
@@ -39,9 +43,12 @@ const ImgComponent = ({ images }) => {
             } catch (err) {
                 console.error(err)
             }
+
         }
+
     }
 
+    // handling pressing like
     const imgLiked = async (img) => {
 
         var docId;
@@ -67,7 +74,8 @@ const ImgComponent = ({ images }) => {
         updateUser(img.uid, "likes")
     }
 
-    const imgReported = async (img,) => {
+    // handling pressing report
+    const imgReported = async (img) => {
 
         var docId;
 
@@ -92,6 +100,7 @@ const ImgComponent = ({ images }) => {
         updateUser(img.uid, "reports")
     }
 
+    // updating user likes, or reports
     const updateUser = async (id, prop) => {
 
         var docId;
@@ -107,26 +116,28 @@ const ImgComponent = ({ images }) => {
         const userRef = doc(db, 'users', docId);
 
         if (prop == "likes") {
+
             const updateImages = await updateDoc(userRef, {
                 imageLikes: arrayUnion(id)
             });
+
         }
         else {
+
             const updateImages = await updateDoc(userRef, {
                 imageReports: arrayUnion(id)
             });
+
         }
 
         getData()
     }
 
-    useEffect(() => {
-        getData()
-    }, [])
-
+    // run getData func when user gets defined
     useEffect(() => {
         getData()
     }, [user])
+
 
     return (
 
@@ -157,13 +168,12 @@ const ImgComponent = ({ images }) => {
                             <a><img src='/fullscreen.png' /></a>
                         </Link>
 
-                        {user != null ? likedImgs.includes(image.uid) ?
-                            <></>
-                            :
+                        {/* display like or report buttons if they are not already pressed and user exists */}
+                        {user != null ? likedImgs.includes(image.uid) ? 
+                            <></> : 
                             <a onClick={() => imgLiked(image)} className={styles.like}><img src='/like.png' /></a> : <></>}
-                        {user != null ? reportedImgs.includes(image.uid) ?
-                            <></>
-                            :
+                        {user != null ? reportedImgs.includes(image.uid) ? 
+                            <></> : 
                             <a onClick={() => imgReported(image)} className={styles.rprt}><img src='/report.png' /></a> : <></>}
 
                     </div>
@@ -176,7 +186,7 @@ const ImgComponent = ({ images }) => {
         })
 
     )
-
+    
 }
 
 export default ImgComponent;

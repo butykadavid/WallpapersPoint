@@ -32,6 +32,7 @@ const ProfilePage = ({ images }) => {
 
                     <div className={styles.imgContainer}>
 
+                        {/* very similar to the normal ImgComponent, but with different styling and functions */}
                         <ImgComponentProfile images={images} />
 
                     </div>
@@ -43,6 +44,7 @@ const ProfilePage = ({ images }) => {
         );
 
     } else {
+
         return (
 
             <div className={styles.container}>
@@ -54,12 +56,14 @@ const ProfilePage = ({ images }) => {
             </div>
 
         )
+
     }
 
 }
 
 export const getServerSideProps = async (context) => {
 
+    // get all images uploaded by current user
     const q = query(collection(db, "images"), where("uploadedBy.uid", "==", context.query.profile));
     const fetchedDocs = await getDocs(q)
 

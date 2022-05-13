@@ -29,6 +29,9 @@ const browsePage = ({ images }) => {
 
 export const getServerSideProps = async (context) => {
 
+    // get images to display on the page
+
+    // if it was not a search
     if (context.query.search == undefined || context.query.search.length < 1) {
 
         const q = query(collection(db, "images"));
@@ -42,7 +45,10 @@ export const getServerSideProps = async (context) => {
 
         return { props: { images: images } };
 
-    } else {
+    } 
+    
+    // if it was a search
+    else {
 
         const q = query(collection(db, "images"), where("hashtags", "array-contains", '#' + context.query.search));
         const fetchedDocs = await getDocs(q)
