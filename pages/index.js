@@ -59,7 +59,7 @@ export default function Home({ bottomImages, bg }) {
         <div className={styles.innerContainer}>
 
           {/* component displaying top 5 images by likes on the bottom of the page */}
-          <TopImagesComponent images={bottomImages} />
+          <TopImagesComponent images={bottomImages}/>
           <div>Hi!</div>
 
 

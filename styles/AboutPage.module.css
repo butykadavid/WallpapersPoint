@@ -1,0 +1,79 @@
+.content{
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.textBox{
+    width: 50vw;
+    height: fit-content;
+
+    margin: auto;
+    padding: 10vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textBox p{
+    font-size: 28px;
+
+    text-align: left;
+
+    background: -webkit-linear-gradient(#2EFF9B, #00EFD2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: Montserrat, sans-serif;
+}
+
+.myPicDiv{
+    width: 50vw;
+    height: fit-content;
+
+    margin: 10vh 0vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.myPic{
+    width: 250px;
+    height: 250px;
+
+    border-radius: 100%;
+    border: 3px solid #2EFF9B;
+}
+
+.myName{
+    font-size: 72px;
+
+    text-align: center;
+
+    background: -webkit-linear-gradient(#2EFF9B, #00EFD2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: Montserrat, sans-serif;
+}
+
+.socialDiv{
+    width: 50%;
+    height: fit-content;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.socialDiv a img{
+    width: 30px;
+    transition: 2.5s ease-in-out;
+}
+
+.socialDiv a:hover img{
+    transform: rotateZ(360deg);
+}

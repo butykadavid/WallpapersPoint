@@ -180,7 +180,7 @@
     /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #454545;
     /* Firefox */
-    opacity: 1; 
+    opacity: 1;
 }
 
 .navBar .search .searchBar input::-ms-input-placeholder {

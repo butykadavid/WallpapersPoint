@@ -4,7 +4,7 @@ import LabelComponent from "./LabelComponent";
 import styles from "../../styles/CategoriesPage.module.css"
 
 import { db } from "../../public/firebase";
-import { query, getDocs, collection, where, doc, getDoc } from 'firebase/firestore';
+import { query, getDocs, collection } from 'firebase/firestore';
 
 
 const categoriesPage = ({ tags }) => {

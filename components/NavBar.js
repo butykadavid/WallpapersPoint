@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { auth, signInWithGoogle, signOutFunc } from "../public/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-const NavBar = () => {
+const NavBar = ({tags}) => {
 
     const [user] = useAuthState(auth)
     const router = useRouter()
@@ -86,6 +86,21 @@ const NavBar = () => {
 
         </div>
     );
+}
+
+export const getStaticProps = async () => {
+
+    // get categories from db
+    const q = query(collection(db, "tags"));
+    const fetchedDocs = await getDocs(q)
+
+    const tags = fetchedDocs.docs.map((doc) => {
+        return {
+            ...doc.data().tags,
+        };
+    });
+
+    return { props: { tags: tags } };
 }
 
 export default NavBar;
