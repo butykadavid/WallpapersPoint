@@ -22,11 +22,9 @@
 }
 
 .card .imgOverlap{
-    opacity: 0;
-
     position: absolute;
     
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -37,14 +35,16 @@
 .card .imgOverlap a{
     width: 15%;
 
-    margin: 30px;
+    margin: 2vw;
     padding: 4%;
+
+    visibility: collapse;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    background: linear-gradient(to right, #252525, #252525);
+    background: #252525;
     border: 3px solid;
     border-image-slice: 1;
     border-image-source: linear-gradient(to right, #2EFF9B, #00EFD2);
@@ -73,9 +73,23 @@
 }
 
 .card:hover .imgOverlap{
-    opacity: 100;
+    display: flex;
+}
+
+.card:hover .imgOverlap a {
+    visibility: visible;
 }
 
 .card:hover img{
     filter: brightness(0.5);
+}
+
+@media only screen and (max-width: 900px){
+
+    .card .imgOverlap a{
+        width: 20%;
+
+        margin: 1vw;
+    }
+
 }

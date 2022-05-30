@@ -16,7 +16,7 @@
     width: 35%;
     height: 100%;
 
-    padding: 1em;
+    padding: 1vw;
 
     display: flex;
     flex-direction: column;
@@ -28,7 +28,7 @@
     width: 50%;
     height: 100%;
 
-    padding: 1em;
+    padding: 1vw;
 
     display: flex;
     justify-content: flex-end;
@@ -36,9 +36,9 @@
 }
 
 .navBar .menu a {
-    margin: 0px 20px;
+    margin: 0px 1.2vw;
 
-    font-size: 1.3em;
+    font-size: 1.4vw;
     color: #656565;
     font-weight: 700;
 
@@ -52,7 +52,7 @@
 
 .navBar .menu .logIn {
     margin-right: 0px;
-    padding: 3px 45px;
+    padding: 0.2vw 3vw;
 
     cursor: pointer;
 
@@ -92,7 +92,7 @@
     width: 100%;
 
     margin: 0;
-    margin-left: 5px;
+    margin-left: 0.3vw;
 
     position: absolute;
 
@@ -104,11 +104,11 @@
 
 .dropdowncontent .item {
     color: #656565;
-    font-size: 0.9em !important;
+    font-size: 0.9vw !important;
     text-decoration: none;
     cursor: pointer;
 
-    margin: 10px 0px !important;
+    margin: 0.7vw 0px !important;
 }
 
 .dropdown:hover .dropdowncontent {
@@ -195,6 +195,8 @@
 
 .navBar .search .popularSearch h3 {
     color: #656565;
+
+    font-size: 1.4vw;
 }
 
 .navBar .search .popularSearch div {
@@ -205,10 +207,150 @@
 
 .navBar .search .popularSearch div a {
     color: #656565;
-    margin: 0px 5px;
-    font-size: small;
+
+    margin: 0vw 0.3vw;
+
+    font-size: 1vw;
 }
 
 .navBar .search .popularSearch div a:last-child {
     margin-right: 0px;
+}
+
+.mobileMenuIcon{
+    display: none;
+
+    width: 3vw;
+
+    margin-right: 3vw;
+
+    transition: 0.25s ease-in-out;
+}
+
+.mobileMenuIcon img{
+    width: 100%;
+}
+
+.mobileMenuIcon:hover{
+    transform: rotateZ(-90deg);
+}
+
+.sideMenu{
+    position: fixed;
+    top: 0;
+    right: -26vw;
+
+    width: 25vw;
+    height: 100vh;
+
+    background-color: #252525;
+    border-left: 3px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to bottom, #2EFF9B, #00EFD2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    z-index: 10;
+
+    transition: 0.35s ease-in-out;
+}
+
+.sideMenu div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.sideMenu a{
+    margin: 2vw 0vw;
+    font-size: 3vw;
+    color: #656565;
+    font-weight: 700;
+
+    padding: 0vw 1vw;
+
+    border-left: 3px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, #2EFF9B, #00EFD2);
+
+    transition: 0.25s ease-in-out;
+}
+
+.sideMenu a:hover{
+    background: linear-gradient(to right, #2EFF9B, #00EFD2);
+}
+
+.mobileMenuIcon:hover + .sideMenu {
+    right: 0;
+}
+
+.sideMenu:hover{
+    right: 0;
+}
+
+@media only screen and (max-width: 900px) {
+
+    .navBar{
+        height: 10vh;
+    }
+
+    .navBar .search {
+        width: 50%;
+
+        padding-left: 3vw;
+
+        justify-content: center;
+    }
+
+    .navBar .menu{
+        display: none;
+    }
+
+    .navBar .search .popularSearch {
+        display: none;
+    }
+
+    .navBar .mobileMenuIcon{
+        display: block;
+
+        width: 4vw;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    .navBar .search {
+        width: 65%;
+
+        padding-left: 3vw;
+
+        justify-content: center;
+    }
+
+    .navBar .search .searchBar button{
+        width: 10%;
+    }
+
+    .navBar .search .searchBar input{
+        font-size: 3vw;
+    }
+
+    .navBar .mobileMenuIcon{
+        width: 5vw;
+    }
+
+    .navBar .sideMenu{
+        right: -36vw;
+        
+        width: 35vw;
+    }
+
+    .navBar .sideMenu a{
+        font-size: 4vw;
+    }
+
 }

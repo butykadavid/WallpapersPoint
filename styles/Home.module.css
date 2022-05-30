@@ -10,41 +10,41 @@
   flex-direction: column;
 }
 
-.container .titleContainer{
+.container .titleContainer {
   width: 100vw;
   height: 45%;
 
   padding-left: 10%;
-  
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 }
 
-.container .titleContainer h1{
+.container .titleContainer h1 {
   margin: 0;
-  margin-left: -15px;
+  margin-left: -0.8vw;
 
-  font-size: 90px;
+  font-size: 7vw;
   font-family: Montserrat, sans-serif;
   color: #252525;
 }
 
-.container .titleContainer h3{
+.container .titleContainer h3 {
   margin: 0;
 
-  font-size: 30px;
+  font-size: 2.2vw;
   font-family: Roboto, sans-serif;
   font-weight: 500;
   color: #252525;
 }
 
-.container .titleContainer a{
-  margin-top: 20px;
+.container .titleContainer a {
+  margin-top: 1.2vw;
   padding: 3px 45px;
 
-  font-size: 20px;
+  font-size: 1.2vw;
   font-weight: 900;
   font-family: Roboto;
   color: #d5d5d5;
@@ -56,12 +56,12 @@
   transition: 0.25s ease-in-out;
 }
 
-.container .titleContainer a:hover{
+.container .titleContainer a:hover {
   color: #252525;
   background: linear-gradient(to right, #2EFF9B, #00EFD2);
 }
 
-.bottomContainer{
+.bottomContainer {
   width: 100vw;
   height: 40%;
 
@@ -80,11 +80,7 @@
   position: relative;
 }
 
-.bottomContainer::-webkit-scrollbar{
-  display: none;
-}
-
-.bottomContainer h3{
+.bottomContainer h3 {
   position: fixed;
   bottom: 30%;
 
@@ -94,13 +90,13 @@
   font-size: x-large;
 }
 
-.bottomContainer .innerContainer{
+.bottomContainer .innerContainer {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 
-.bottomContainer .innerContainer a{
+.bottomContainer .innerContainer a {
   height: 9.5%;
 
   margin-right: 10%;
@@ -110,14 +106,68 @@
   border-image-source: linear-gradient(to right, #2EFF9B, #00EFD2);
 }
 
-.bottomContainer .innerContainer a img{
+.bottomContainer .innerContainer a img {
   height: 100%;
 }
 
-.bottomContainer .innerContainer div{
+.bottomContainer .innerContainer div {
   width: 10%;
   color: transparent;
 }
 
+@media only screen and (max-width: 900px) {
+
+  .container .titleContainer {
+    height: 60%;
+  }
+
+  .container .titleContainer h1 {
+    font-size: 8vw;
+  }
+
+  .container .titleContainer h3 {
+    font-size: 3vw;
+  }
+
+  .container .titleContainer a {
+    font-size: 2vw;
+
+    padding: 6px 45px;
+  }
+
+  .bottomContainer {
+    height: 30%;
+  }
+
+  .bottomContainer h3 {
+    bottom: 22.5%;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
 
 
+  .container .titleContainer h1 {
+    font-size: 9vw;
+  }
+
+  .container .titleContainer h3 {
+    font-size: 4vw;
+  }
+
+  .container .titleContainer a {
+    font-size: 3vw;
+
+    padding: 6px 45px;
+  }
+
+  .bottomContainer h3{
+    font-size: 4vw;
+  }
+
+  .bottomContainer .innerContainer a {
+    height: 5%;
+  }
+
+}

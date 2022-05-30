@@ -84,6 +84,21 @@ const NavBar = ({tags}) => {
 
             </div>
 
+            <a className={styles.mobileMenuIcon}><img src="menu.png"/></a>
+
+            <div className={styles.sideMenu}>
+
+                <div>
+
+                    <a href="/">Home</a>
+                    <a href="/browse">Browse</a>
+                    <a href="/categories">Categories</a>
+                    <a href="/about">About</a>
+
+                </div>
+
+            </div>
+
         </div>
     );
 }

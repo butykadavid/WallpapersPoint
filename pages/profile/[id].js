@@ -23,8 +23,14 @@ const ProfilePage = ({ images }) => {
 
                     <div className={styles.nameWrapper}>
 
-                        <h2>{user.displayName}</h2>
-                        <h2>{user.email}</h2>
+                        <div>
+
+                            <h2>{user.displayName}</h2>
+                            <h2>{user.email}</h2>
+
+                        </div>
+
+                        <img src="/emptyProfile.png"/>
 
                     </div>
 
