@@ -84,16 +84,40 @@ const NavBar = ({tags}) => {
 
             </div>
 
-            <a className={styles.mobileMenuIcon}><img src="menu.png"/></a>
+            <a className={styles.mobileMenuIcon}><img src="/menu.png"/></a>
 
             <div className={styles.sideMenu}>
 
                 <div>
 
-                    <a href="/">Home</a>
-                    <a href="/browse">Browse</a>
-                    <a href="/categories">Categories</a>
-                    <a href="/about">About</a>
+                    <a className={styles.sideMenuItem} href="/">Home</a>
+                    <a className={styles.sideMenuItem} href="/browse">Browse</a>
+                    <a className={styles.sideMenuItem} href="/categories">Categories</a>
+                    <a className={styles.sideMenuItem} href="/about">About</a>
+
+                    {/* if user is signed in display user menu */}
+                    {user == null || user == [] ?
+                        <a className={styles.logIn} onClick={signInWithGoogle}>Log In</a>
+                        :
+                        <div>
+
+                            <p className={styles.sideMenuUserName}>{user.displayName.split(' ')[0]}</p>
+                            <a className={styles.sideMenuItem_2} href="/upload">Upload</a>
+                            <Link
+                                href={{
+                                    pathname: `profile/${user.uid}`,
+                                    query: {
+                                        profile: user.uid
+                                    }
+                                }}
+                            >
+                                <a className={styles.sideMenuItem_2}>My profile</a>
+                            </Link>
+                            <a className={styles.sideMenuItem_2} onClick={signOutFunc}>Log Out</a>
+
+                        </div>
+                            
+                    }
 
                 </div>
 

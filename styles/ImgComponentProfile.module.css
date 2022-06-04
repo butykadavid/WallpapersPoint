@@ -88,3 +88,23 @@
     color: #656565;
     margin: 0;
 }
+
+@media only screen and (max-width: 900px){
+
+    .card .imgOverlap a{
+        width: 20%;
+
+        margin: 1vw;
+    }
+
+}
+
+@media only screen and (max-width: 600px){
+
+    .card .imgOverlap a{
+        width: 25%;
+
+        margin: 0.5vw;
+    }
+
+}

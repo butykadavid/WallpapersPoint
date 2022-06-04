@@ -85,3 +85,53 @@
     width: 100%;
     filter: brightness(75%);
 }
+
+@media only screen and (max-width: 900px){
+
+    .mainImg{
+        max-width: 80vw;
+        max-height: 50vh;
+    
+        margin-top: 10vh;
+
+        left: 50%;
+        transform: translateX(-50%);
+
+        border: 3px solid;
+        border-image-slice: 1;
+        border-image-source: linear-gradient(to right, #2EFF9B, #00EFD2);
+        border-bottom: none;
+    }
+
+    .details{
+        width: 80vw;
+
+        margin-bottom: 10vh;
+
+        border: 3px solid;
+        border-image-slice: 1;
+        border-image-source: linear-gradient(to right, #2EFF9B, #00EFD2);
+        border-top: none;
+
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .details h1{
+        font-size: 1.8vh;
+    }
+
+    .details h2{
+        font-size: 1.8vh;
+    }
+
+    .details h3{
+        font-size: 1.5vh;
+    }
+
+    .details .buttons .dwnld{
+        width: 10%;
+        padding: 5px;
+    }
+
+}

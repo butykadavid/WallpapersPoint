@@ -50,7 +50,7 @@
 }
 
 
-.navBar .menu .logIn {
+.logIn {
     margin-right: 0px;
     padding: 0.2vw 3vw;
 
@@ -63,7 +63,7 @@
 
 }
 
-.navBar .menu .logIn:hover {
+.logIn:hover {
     color: #252525;
     background: linear-gradient(to right, #2EFF9B, #00EFD2);
 }
@@ -265,7 +265,7 @@
     align-items: flex-start;
 }
 
-.sideMenu a{
+.sideMenu .sideMenuItem{
     margin: 2vw 0vw;
     font-size: 3vw;
     color: #656565;
@@ -280,7 +280,34 @@
     transition: 0.25s ease-in-out;
 }
 
-.sideMenu a:hover{
+.sideMenu .sideMenuItem:hover{
+    background: linear-gradient(to right, #2EFF9B, #00EFD2);
+}
+
+.sideMenu .sideMenuUserName{
+    font-size: 6vw;
+    color: #2EFF9B;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.sideMenu .sideMenuItem_2{
+    margin: 1vw 0vw;
+    margin-left: 1vw;
+    font-size: 2.75vw;
+    color: #656565;
+    font-weight: 700;
+
+    padding: 0vw 1vw;
+
+    border-left: 3px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, #2EFF9B, #00EFD2);
+
+    transition: 0.25s ease-in-out;
+}
+
+.sideMenu .sideMenuItem_2:hover{
     background: linear-gradient(to right, #2EFF9B, #00EFD2);
 }
 
@@ -308,6 +335,10 @@
 
     .navBar .menu{
         display: none;
+    }
+
+    .logIn{
+        margin: 2vw 0vw;
     }
 
     .navBar .search .popularSearch {
@@ -349,7 +380,7 @@
         width: 35vw;
     }
 
-    .navBar .sideMenu a{
+    .navBar .sideMenu .sideMenuItem{
         font-size: 4vw;
     }
 

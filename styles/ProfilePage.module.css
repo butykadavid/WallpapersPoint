@@ -75,3 +75,29 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+@media only screen and (max-width: 900px){
+    
+    .content .nameWrapper h2 {
+        font-size: 4vw;
+    }
+
+    .imgContainer{
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .container h1{
+        font-size: 20px;
+    }
+
+}
+
+@media only screen and (max-width: 600px){
+    .imgContainer{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .content .nameWrapper img {
+        display: none;
+    }
+}

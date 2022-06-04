@@ -13,7 +13,7 @@
 .container h1{
     margin: 0;
 
-    font-size: 100px;
+    font-size: 8vh;
 
     background: -webkit-linear-gradient(#2EFF9B, #00EFD2);
     -webkit-background-clip: text;
@@ -23,7 +23,7 @@
 .container h2{
     margin: 0;
 
-    font-size: 72px;
+    font-size: 4vh;
 
     background: -webkit-linear-gradient(#2EFF9B, #00EFD2);
     -webkit-background-clip: text;
@@ -33,6 +33,6 @@
 .container a{
     margin: 5%;
 
-    font-size: 30px;
+    font-size: 3vh;
     color: #656565;
 }

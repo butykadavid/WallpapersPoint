@@ -22,7 +22,7 @@
 }
 
 .middleContainer div h1 {
-    font-size: 90px;
+    font-size: 7vw;
     font-family: Montserrat, sans-serif;
     color: #2EFF9B;
 
@@ -87,4 +87,15 @@
 .uploadButton:hover {
     background: linear-gradient(to right, #2EFF9B, #00EFD2);
     color: #252525;
+}
+
+@media only screen and (max-width: 300px){
+
+    .inputButton{
+        font-size: 1em;
+    }
+    .uploadButton{
+        font-size: 1em;
+    }
+
 }
