@@ -148,8 +148,8 @@ const ImgComponentProfile = ({ images }) => {
 
             return (<div>
 
-                <h4 className={styles.noImg}>You haven't uploaded any images yet</h4>
-                <p className={styles.noImg}>Go to <a href="/upload">upload page</a> to upload pictures</p>
+                <h4 className={styles.noImg}>You have not uploaded any images yet</h4>
+                <p className={styles.noImg}>Go to <Link href="/upload">upload page</Link> to upload pictures</p>
 
             </div>)
 

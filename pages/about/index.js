@@ -36,11 +36,11 @@ const AboutPage = () => {
 
           <div className={styles.socialDiv}>
 
-            <a href="https://www.facebook.com/david.butyka" target="_blank"><img src="facebook.png"/></a>
-            <a href="https://www.instagram.com/_btykdvd_/" target="_blank"><img src="instagram.png"/></a>
-            <a href="https://dawson0810.github.io" target="_blank"><img src="browser.png"/></a>
-            <a href="https://www.linkedin.com/in/d%C3%A1vid-butyka-565a7a236/" target="_blank"><img src="linkedin.png"/></a>
-            <a href="https://github.com/dawson0810" target="_blank"><img src="github.png"/></a>
+            <a href="https://www.facebook.com/david.butyka" target="_blank" rel="noreferrer"><img src="facebook.png"/></a>
+            <a href="https://www.instagram.com/_btykdvd_/" target="_blank" rel="noreferrer"><img src="instagram.png"/></a>
+            <a href="https://dawson0810.github.io" target="_blank" rel="noreferrer"><img src="browser.png"/></a>
+            <a href="https://www.linkedin.com/in/d%C3%A1vid-butyka-565a7a236/" target="_blank" rel="noreferrer"><img src="linkedin.png"/></a>
+            <a href="https://github.com/dawson0810" target="_blank" rel="noreferrer"><img src="github.png"/></a>
 
           </div>
 

@@ -8,7 +8,7 @@ const TopImagesComponent = ({ images }) => {
 
       return (
 
-        <Link
+        <Link key={image.uid}
           href={{
             pathname: `browse/${image.uid} `,
             query: {

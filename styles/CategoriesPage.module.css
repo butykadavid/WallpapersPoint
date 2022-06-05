@@ -30,13 +30,15 @@
     padding: 3%;
 }
 
-.labelContainer a{
+.labelContainer p{
     color: #656565;
+
+    margin: 0;
 
     transition: 0.25s ease-in-out;
 }
 
-.labelContainer a:hover{
+.labelContainer p:hover{
     color: #2EFF9B;
 }
 
@@ -58,7 +60,7 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .labelContainer a{
+    .labelContainer p{
         font-size: 4vw;
     }
 

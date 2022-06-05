@@ -109,6 +109,12 @@
     cursor: pointer;
 
     margin: 0.7vw 0px !important;
+
+    transition: 0.25s ease-in-out;
+}
+
+.dropdowncontent .item:hover {
+    color: #d5d5d5;
 }
 
 .dropdown:hover .dropdowncontent {

@@ -54,10 +54,10 @@ const NavBar = ({tags}) => {
 
             <div className={styles.menu}>
 
-                <a href="/">Home</a>
-                <a href="/browse">Browse</a>
-                <a href="/categories">Categories</a>
-                <a href="/about">About</a>
+                <Link href="/">Home</Link>
+                <Link href="/browse">Browse</Link>
+                <Link href="/categories">Categories</Link>
+                <Link href="/about">About</Link>
 
                 {/* if user is signed in display user menu */}
                 {user == null || user == [] ?
@@ -66,7 +66,7 @@ const NavBar = ({tags}) => {
                     <div className={styles.dropdown}>
                         <a className={styles.loggedIn}>{user.displayName.split(' ')[0]} ▼</a>
                         <div className={styles.dropdowncontent}>
-                            <a className={styles.item} href="/upload">Upload</a>
+                            <Link href="/upload"><p className={styles.item}>Upload</p></Link>
                             <Link
                             href={{
                                 pathname: `profile/${user.uid}`,
@@ -75,7 +75,7 @@ const NavBar = ({tags}) => {
                                 }
                             }}
                         >
-                            <a className={styles.item}>My profile</a>
+                            <p className={styles.item}>My profile</p>
                         </Link>
                             <a className={styles.item} onClick={signOutFunc}>Log Out</a>
                         </div>
@@ -90,10 +90,10 @@ const NavBar = ({tags}) => {
 
                 <div>
 
-                    <a className={styles.sideMenuItem} href="/">Home</a>
-                    <a className={styles.sideMenuItem} href="/browse">Browse</a>
-                    <a className={styles.sideMenuItem} href="/categories">Categories</a>
-                    <a className={styles.sideMenuItem} href="/about">About</a>
+                    <Link href="/"><p className={styles.sideMenuItem}>Home</p></Link>
+                    <Link href="/browse"><p className={styles.sideMenuItem}>Browse</p></Link>
+                    <Link href="/categories"><p className={styles.sideMenuItem}>Categories</p></Link>
+                    <Link href="/about"><p className={styles.sideMenuItem}>About</p></Link>
 
                     {/* if user is signed in display user menu */}
                     {user == null || user == [] ?
@@ -102,7 +102,7 @@ const NavBar = ({tags}) => {
                         <div>
 
                             <p className={styles.sideMenuUserName}>{user.displayName.split(' ')[0]}</p>
-                            <a className={styles.sideMenuItem_2} href="/upload">Upload</a>
+                            <Link href="/upload"><p className={styles.sideMenuItem_2}>Upload</p></Link>
                             <Link
                                 href={{
                                     pathname: `profile/${user.uid}`,
@@ -111,7 +111,7 @@ const NavBar = ({tags}) => {
                                     }
                                 }}
                             >
-                                <a className={styles.sideMenuItem_2}>My profile</a>
+                                <p className={styles.sideMenuItem_2}>My profile</p>
                             </Link>
                             <a className={styles.sideMenuItem_2} onClick={signOutFunc}>Log Out</a>
 

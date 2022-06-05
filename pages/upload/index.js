@@ -2,16 +2,14 @@ import NavBar from "../../components/NavBar";
 
 import styles from "../../styles/UploadPage.module.css"
 
-import Script from "next/script"
-
-import { useState, useEffect, createRef } from "react";
+import { useState, createRef } from "react";
 
 import { v4 as uuidv4 } from 'uuid'
 
 import { uploadBytes, ref, getDownloadURL, getMetadata } from 'firebase/storage'
-import { auth, db, storage, storageRef } from "../../public/firebase";
+import { auth, db, storage} from "../../public/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { getFirestore, query, getDocs, collection, where, addDoc, snapshotEqual, setDoc, doc, updateDoc, arrayUnion } from 'firebase/firestore';
+import { query, getDocs, collection, where, addDoc, doc, updateDoc, arrayUnion } from 'firebase/firestore';
 
 
 const uploadPage = () => {
