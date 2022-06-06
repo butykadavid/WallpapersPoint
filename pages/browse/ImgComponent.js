@@ -139,53 +139,56 @@ const ImgComponent = ({ images }) => {
     }, [user])
 
 
-    return (
+    if(_images){
+    
+        return (
 
-        _images.map(image => {
+            _images.map(image => {
 
-            return (<>
+                return (<>
 
-                <div className={styles.card}>
+                    <div className={styles.card}>
 
-                    <img src={image.displayUrl} />
+                        <img src={image.displayUrl} />
 
-                    <div className={styles.imgOverlap}>
+                        <div className={styles.imgOverlap}>
 
-                        <a href={image.downloadUrl} className={styles.dwnld}><img src='/download.png' /></a>
-                        <Link
-                            href={{
-                                pathname: `browse/${image.uid} `,
-                                query: {
-                                    displayUrl: image.displayUrl,
-                                    downloadUrl: image.downloadUrl,
-                                    uploaderEmail: image.uploadedBy.email,
-                                    hashtags: image.hashtags,
-                                    likes: image.likes,
-                                    reports: image.reports
-                                }
-                            }}
-                        >
-                            <a><img src='/fullscreen.png' /></a>
-                        </Link>
+                            <a href={image.downloadUrl} className={styles.dwnld}><img src='/download.png' /></a>
+                            <Link
+                                href={{
+                                    pathname: `browse/${image.uid} `,
+                                    query: {
+                                        displayUrl: image.displayUrl,
+                                        downloadUrl: image.downloadUrl,
+                                        uploaderEmail: image.uploadedBy.email,
+                                        hashtags: image.hashtags,
+                                        likes: image.likes,
+                                        reports: image.reports
+                                    }
+                                }}
+                            >
+                                <a><img src='/fullscreen.png' /></a>
+                            </Link>
 
-                        {/* display like or report buttons if they are not already pressed and user exists */}
-                        {user != null ? likedImgs.includes(image.uid) ? 
-                            <></> : 
-                            <a onClick={() => imgLiked(image)} className={styles.like}><img src='/like.png' /></a> : <></>}
-                        {user != null ? reportedImgs.includes(image.uid) ? 
-                            <></> : 
-                            <a onClick={() => imgReported(image)} className={styles.rprt}><img src='/report.png' /></a> : <></>}
+                            {/* display like or report buttons if they are not already pressed and user exists */}
+                            {user != null ? likedImgs.includes(image.uid) ? 
+                                <></> : 
+                                <a onClick={() => imgLiked(image)} className={styles.like}><img src='/like.png' /></a> : <></>}
+                            {user != null ? reportedImgs.includes(image.uid) ? 
+                                <></> : 
+                                <a onClick={() => imgReported(image)} className={styles.rprt}><img src='/report.png' /></a> : <></>}
+
+                        </div>
+
 
                     </div>
 
+                </>)
 
-                </div>
+            })
 
-            </>)
-
-        })
-
-    )
+        )
+    }
     
 }
 

@@ -101,58 +101,61 @@ const ImgComponentProfile = ({ images }) => {
     // if deleting is in progress page displays a loading screen
     if (isInProgress == false) {
 
-        if (_images.length > 0) {
+        if(_images){
 
-            return (
+            if (_images.length > 0) {
 
-                _images.map(image => {
+                return (
 
-                    return (<>
+                    _images.map(image => {
 
-                        <div className={styles.card}>
+                        return (<>
 
-                            <img src={image.displayUrl} />
+                            <div className={styles.card}>
 
-                            <div className={styles.imgOverlap}>
+                                <img src={image.displayUrl} />
 
-                                <a href={image.downloadUrl} className={styles.dwnld}><img src='/download.png' /></a>
-                                <Link
-                                    href={{
-                                        pathname: `image/${image.uid} `,
-                                        query: {
-                                            displayUrl: image.displayUrl,
-                                            downloadUrl: image.downloadUrl,
-                                            uploaderEmail: image.uploadedBy.email,
-                                            hashtags: image.hashtags,
-                                            likes: image.likes,
-                                            reports: image.reports
-                                        }
-                                    }}
-                                >
-                                    <a><img src='/fullscreen.png' /></a>
-                                </Link>
-                                <a onClick={() => deleteFromStorage(image)} className={styles.rprt}><img src='/delete.png' /></a>
+                                <div className={styles.imgOverlap}>
+
+                                    <a href={image.downloadUrl} className={styles.dwnld}><img src='/download.png' /></a>
+                                    <Link
+                                        href={{
+                                            pathname: `image/${image.uid} `,
+                                            query: {
+                                                displayUrl: image.displayUrl,
+                                                downloadUrl: image.downloadUrl,
+                                                uploaderEmail: image.uploadedBy.email,
+                                                hashtags: image.hashtags,
+                                                likes: image.likes,
+                                                reports: image.reports
+                                            }
+                                        }}
+                                    >
+                                        <a><img src='/fullscreen.png' /></a>
+                                    </Link>
+                                    <a onClick={() => deleteFromStorage(image)} className={styles.rprt}><img src='/delete.png' /></a>
+
+                                </div>
+
 
                             </div>
 
+                        </>)
 
-                        </div>
+                    })
 
-                    </>)
+                )
 
-                })
+            } else {
 
-            )
+                return (<div>
 
-        } else {
+                    <h4 className={styles.noImg}>You have not uploaded any images yet</h4>
+                    <p className={styles.noImg}>Go to <Link href="/upload">upload page</Link> to upload pictures</p>
 
-            return (<div>
+                </div>)
 
-                <h4 className={styles.noImg}>You have not uploaded any images yet</h4>
-                <p className={styles.noImg}>Go to <Link href="/upload">upload page</Link> to upload pictures</p>
-
-            </div>)
-
+            }
         }
 
     } else {

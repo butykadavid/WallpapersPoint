@@ -3,25 +3,29 @@ import Link from 'next/link'
 
 const LabelComponent = ({tags}) => {
 
-    return (
+    if(tags){
 
-        tags.map(tag => {
+        return (
 
-            return (
+            tags.map(tag => {
 
-                // clicking on a category is the same as searching for that word
-                <Link key={tag} href={{
-                    pathname: '/browse',
-                    query: { search: tag }
-                }}>
-                    <p>{tag}</p>
-                </Link >
+                return (
 
-            )
+                    // clicking on a category is the same as searching for that word
+                    <Link key={tag} href={{
+                        pathname: '/browse',
+                        query: { search: tag }
+                    }}>
+                        <p>{tag}</p>
+                    </Link >
 
-        })
+                )
 
-    );
+            })
+
+        );
+        
+    }
 
 }
 
