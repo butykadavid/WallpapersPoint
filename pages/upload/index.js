@@ -11,8 +11,7 @@ import { auth, db, storage} from "../../public/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { query, getDocs, collection, where, addDoc, doc, updateDoc, arrayUnion } from 'firebase/firestore';
 
-
-const uploadPage = () => {
+const UploadPage = () => {
 
     const file = null;
     const metadata = [];
@@ -125,7 +124,6 @@ const uploadPage = () => {
 
     }
 
-
     if (isInProgress == false) {
 
         if (user == null || user == []) {
@@ -207,4 +205,4 @@ const uploadPage = () => {
 
 }
 
-export default uploadPage;
+export default UploadPage;

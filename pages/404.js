@@ -1,5 +1,7 @@
 import styles from '../styles/Custom404.module.css'
 
+import Link from 'next/link'
+
 
 const Custom404 = () => {
     return (
