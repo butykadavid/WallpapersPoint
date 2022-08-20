@@ -81,8 +81,8 @@
 }
 
 .bottomContainer h3 {
-  position: fixed;
-  bottom: 30%;
+  position: absolute;
+  top: 0%;
 
   color: #d5d5d5;
   font-weight: 700;
@@ -140,7 +140,7 @@
   }
 
   .bottomContainer h3 {
-    bottom: 22.5%;
+    top: -3%;
   }
 
 }

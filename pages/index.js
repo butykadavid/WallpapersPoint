@@ -55,7 +55,6 @@ export default function Home({ bottomImages, bg }) {
 
       <div className={styles.bottomContainer}>
 
-        <h3>All time top 5</h3>
         <div className={styles.innerContainer}>
 
           {/* component displaying top 5 images by likes on the bottom of the page */}
