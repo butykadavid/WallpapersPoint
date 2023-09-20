@@ -7,11 +7,11 @@ import { useState, createRef } from "react";
 import { v4 as uuidv4 } from 'uuid'
 
 import { uploadBytes, ref, getDownloadURL, getMetadata } from 'firebase/storage'
-import { auth, db, storage} from "../../public/firebase";
+import { auth, db, storage } from "../../public/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { query, getDocs, collection, where, addDoc, doc, updateDoc, arrayUnion } from 'firebase/firestore';
+import { query, getDocs, collection, where, addDoc, doc, updateDoc, arrayUnion, limit } from 'firebase/firestore';
 
-const UploadPage = () => {
+export default function UploadPage({tags}) {
 
     const file = null;
     const metadata = [];
@@ -60,7 +60,8 @@ const UploadPage = () => {
                     },
                     hashtags: hashtags,
                     likes: 0,
-                    reports: 0
+                    reports: 0,
+                    createdAt: new Date().getTime()
                 });
 
                 // refreshing 'users' collection too
@@ -132,7 +133,7 @@ const UploadPage = () => {
                 <>
                     <div className={styles.container}>
 
-                        <NavBar />
+                        <NavBar tags={tags}/>
 
                         <div className={styles.middleContainer}>
 
@@ -156,7 +157,7 @@ const UploadPage = () => {
                 <>
                     <div className={styles.container}>
 
-                        <NavBar />
+                        <NavBar tags={tags}/>
 
                         <div className={styles.middleContainer}>
 
@@ -205,4 +206,26 @@ const UploadPage = () => {
 
 }
 
-export default UploadPage;
+export const getServerSideProps = async () => {
+
+    // get the first 5 images so we can have tags lol
+    const q = query(collection(db, "images"), limit(5))
+    const fetchedDocs = await getDocs(q)
+    const images = fetchedDocs.docs.map((doc) => {
+        return {
+            ...doc.data(),
+        };
+    });
+
+    // gathering random tags (still cheating)
+    const tags = images.map(image => {
+        let i = Math.floor(Math.random() * image.hashtags.length)
+        return image.hashtags[i];
+    })
+
+    return {
+        props: {
+            tags: tags.splice(0, 5)
+        }
+    };
+}

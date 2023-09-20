@@ -67,6 +67,12 @@ const ImgComponent = ({ images }) => {
 
         const newLikes = docSnap.data().likes + 1
 
+        // cheat again or I dont know
+        // images are not refreshing coz they are already loaded from db
+        // so it doesnt matter if I update db, therefore I just update their like amount manually
+        let _img = images.find(x => x.uid == img.uid);
+        _img.likes++;
+
         const updateImages = await updateDoc(imgRef, {
             likes: newLikes
         });
@@ -92,6 +98,12 @@ const ImgComponent = ({ images }) => {
         const docSnap = await getDoc(imgRef)
 
         const newReports = docSnap.data().reports + 1
+
+        // cheat again
+        // images are not refreshing coz they are already loaded from db
+        // so it doesnt matter if I update db, therefore I just update their report amount manually
+        let _img = images.find(x => x.uid == img.uid);
+        _img.reports++;
 
         const updateImages = await updateDoc(imgRef, {
             reports: newReports

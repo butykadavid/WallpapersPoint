@@ -3,11 +3,11 @@ import styles from "../../styles/ProfilePage.module.css"
 import NavBar from "../../components/NavBar";
 
 import { auth, db } from "../../public/firebase";
-import { query, getDocs, getDoc, collection, where} from 'firebase/firestore';
+import { query, getDocs, getDoc, collection, where, limit } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 
-const ProfilePage = ({ images }) => {
+const ProfilePage = ({ images, tags }) => {
 
     const [user] = useAuthState(auth)
 
@@ -17,7 +17,7 @@ const ProfilePage = ({ images }) => {
 
             <div className={styles.container}>
 
-                <NavBar />
+                <NavBar tags={tags} />
 
                 <div className={styles.content}>
 
@@ -30,7 +30,7 @@ const ProfilePage = ({ images }) => {
 
                         </div>
 
-                        <img src="/emptyProfile.png"/>
+                        <img src="/emptyProfile.png" />
 
                     </div>
 
@@ -70,16 +70,36 @@ const ProfilePage = ({ images }) => {
 export const getServerSideProps = async (context) => {
 
     // get all images uploaded by current user
-    const q = query(collection(db, "images"), where("uploadedBy.uid", "==", context.query.profile));
-    const fetchedDocs = await getDocs(q)
+    var q = query(collection(db, "images"), where("uploadedBy.uid", "==", context.query.profile));
+    var fetchedDocs = await getDocs(q)
 
+    const userImages = fetchedDocs.docs.map((doc) => {
+        return {
+            ...doc.data(),
+        };
+    });
+
+    // get the first five images again for the tags
+    q = query(collection(db, "images"), limit(5))
+    fetchedDocs = await getDocs(q)
     const images = fetchedDocs.docs.map((doc) => {
         return {
             ...doc.data(),
         };
     });
 
-    return { props: { images: images } };
+    // gathering random tags (...)
+    const tags = images.map(image => {
+        let i = Math.floor(Math.random() * image.hashtags.length)
+        return image.hashtags[i];
+    })
+
+    return {
+        props: {
+            images: userImages,
+            tags: tags
+        }
+    };
 
 }
 

@@ -10,10 +10,10 @@ import { db } from "../public/firebase";
 import { query, getDocs, collection, limit, orderBy } from 'firebase/firestore';
 
 
-export default function Home({ bottomImages, bg }) {
+export default function Home({ bottomImages, bg, tags }) {
 
   return (
-    
+
     // div wrapping whole page with dynamic gackground
     <div className={styles.container} style={{
       background: `linear-gradient(rgba(0, 255, 172, 0.5), rgba(0, 255, 253, 0.5)), url(${bg.displayUrl})`,
@@ -27,7 +27,7 @@ export default function Home({ bottomImages, bg }) {
 
       </Head>
 
-      <NavBar />
+      <NavBar tags={tags} />
 
       <div className={styles.titleContainer}>
 
@@ -58,7 +58,7 @@ export default function Home({ bottomImages, bg }) {
         <div className={styles.innerContainer}>
 
           {/* component displaying top 5 images by likes on the bottom of the page */}
-          <TopImagesComponent images={bottomImages}/>
+          <TopImagesComponent images={bottomImages} />
           <div>Hi!</div>
 
 
@@ -76,20 +76,25 @@ export const getServerSideProps = async () => {
 
   // get the all time top 6 images
   // 6th image is background for now
-  const q = query(collection(db, "images"), orderBy('likes', 'desc'), limit(6));
+  const q = query(collection(db, "images"), orderBy('likes', 'desc'), limit(6))
   const fetchedDocs = await getDocs(q)
-
   const images = fetchedDocs.docs.map((doc) => {
     return {
       ...doc.data(),
     };
   });
 
+  // gathering random tags (basically cheating)
+  const tags = images.map(image => {
+    let i = Math.floor(Math.random() * image.hashtags.length)
+    return image.hashtags[i];
+  })
+
   return {
     props: {
       bottomImages: images.splice(0, 5),
-      bg: images[images.length - 1]
+      bg: images[images.length - 1],
+      tags: tags.splice(0, 5)
     }
   };
-
 }

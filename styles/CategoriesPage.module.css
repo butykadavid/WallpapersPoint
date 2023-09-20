@@ -39,6 +39,7 @@
 }
 
 .labelContainer p:hover{
+    cursor: pointer;
     color: #2EFF9B;
 }
 

@@ -4,25 +4,25 @@ import LabelComponent from "./LabelComponent";
 import styles from "../../styles/CategoriesPage.module.css"
 
 import { db } from "../../public/firebase";
-import { query, getDocs, collection } from 'firebase/firestore';
+import { query, getDocs, collection, limit } from 'firebase/firestore';
 
 
-const categoriesPage = ({ tags }) => {
+export default function categoriesPage({ cats, tags }) {
 
-    const _tags = Object.values(tags[0])
+    const _cats = Object.values(cats[0])
 
     return <>
 
 
         <div className={styles.container}>
 
-            <NavBar />
+            <NavBar tags={tags} />
 
             <h1>Categories</h1>
 
             <div className={styles.labelContainer}>
 
-                <LabelComponent tags={_tags} />
+                <LabelComponent tags={_cats.sort()} />
 
             </div>
 
@@ -32,20 +32,37 @@ const categoriesPage = ({ tags }) => {
 
 }
 
+export const getServerSideProps = async () => {
 
-export const getStaticProps = async () => {
-
-    // get categories from db
-    const q = query(collection(db, "tags"));
-    const fetchedDocs = await getDocs(q)
-
-    const tags = fetchedDocs.docs.map((doc) => {
+    // get the first 5 images for the tags
+    var q = query(collection(db, "images"), limit(5))
+    var fetchedDocs = await getDocs(q)
+    const images = fetchedDocs.docs.map((doc) => {
         return {
-            ...doc.data().tags,
+            ...doc.data(),
         };
     });
 
-    return { props: { tags: tags } };
-}
+    // gathering random tags (still cheating)
+    const tags = images.map(image => {
+        let i = Math.floor(Math.random() * image.hashtags.length)
+        return image.hashtags[i];
+    })
 
-export default categoriesPage;
+    // get categories from db
+    q = query(collection(db, "cats"));
+    fetchedDocs = await getDocs(q)
+
+    const cats = fetchedDocs.docs.map((doc) => {
+        return {
+            ...doc.data().cats,
+        };
+    });
+
+    return {
+        props: {
+            cats: cats,
+            tags: tags
+        }
+    };
+}

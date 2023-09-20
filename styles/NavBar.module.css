@@ -24,6 +24,15 @@
     align-items: center;
 }
 
+.tag{
+    transition: 0.25s ease-in-out;
+}
+
+.tag:hover{
+    cursor: pointer;
+    color: #2EFF9B;
+}
+
 .navBar .menu {
     width: 50%;
     height: 100%;
@@ -97,7 +106,10 @@
     position: absolute;
 
     background: #252525;
+    border-top: 3px solid;
     border-bottom: 3px solid;
+    border-right: 1px solid;
+    border-left: 1px solid;
     border-image-slice: 1;
     border-image-source: linear-gradient(to right, #2EFF9B, #00EFD2);
 }
@@ -207,7 +219,7 @@
 
 .navBar .search .popularSearch div {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -217,10 +229,16 @@
     margin: 0vw 0.3vw;
 
     font-size: 1vw;
+
+    transition: 0.25s ease-in-out;
+}
+
+.navBar .search .popularSearch div a:hover {
+    color: #2EFF9B;
 }
 
 .navBar .search .popularSearch div a:last-child {
-    margin-right: 0px;
+    margin-right: 0;
 }
 
 .mobileMenuIcon{

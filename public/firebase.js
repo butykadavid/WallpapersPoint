@@ -54,7 +54,8 @@ const signInWithGoogle = async () => {
                 email: user.email,
                 images: [],
                 imageLikes: [],
-                imageReports: []
+                imageReports: [],
+                createdAt: new Date().getTime()
             });
         }
     } catch (err) {

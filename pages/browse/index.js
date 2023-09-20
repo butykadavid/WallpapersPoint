@@ -7,13 +7,13 @@ import { db } from "../../public/firebase";
 import { query, getDocs, collection, where, doc, getDoc } from 'firebase/firestore';
 
 
-const browsePage = ({ images }) => {
+const browsePage = ({ images, tags }) => {
 
     return <>
 
         <div className={styles.container}>
 
-            <NavBar />
+            <NavBar tags={tags}/>
 
             <div className={styles.imgContainer}>
 
@@ -43,7 +43,15 @@ export const getServerSideProps = async (context) => {
             };
         });
 
-        return { props: { images: images } };
+        const tags = images.map(image => {
+            let i = Math.floor(Math.random() * image.hashtags.length)
+            return image.hashtags[i];
+        })
+
+        return { props: { 
+            images: images,
+            tags: tags.splice(0,5)
+        }};
 
     } 
     
@@ -59,7 +67,10 @@ export const getServerSideProps = async (context) => {
             };
         });
 
-        return { props: { images: images } };
+        return { props: { 
+            images: images,
+            tags: context.query.tags
+         }};
     }
 
 }

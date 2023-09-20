@@ -1,12 +1,14 @@
 import styles from "../styles/NavBar.module.css"
 
+import NavBarTagsComponent from "./NavbarTagsComponent"
+
 import { useRouter } from "next/router";
 import Link from 'next/link'
 
 import { auth, signInWithGoogle, signOutFunc } from "../public/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-const NavBar = ({tags}) => {
+const NavBar = ({ tags }) => {
 
     const [user] = useAuthState(auth)
     const router = useRouter()
@@ -16,7 +18,10 @@ const NavBar = ({tags}) => {
         if (e.key === "Enter") {
             router.push({
                 pathname: '/browse',
-                query: { search: e.target.value }
+                query: {
+                    search: e.target.value.toLowerCase(),
+                    tags: tags
+                }
             })
         }
     }
@@ -36,15 +41,11 @@ const NavBar = ({tags}) => {
 
                 <div className={styles.popularSearch}>
 
-                    <h3>Top searches:</h3>
+                    <h3>Explore more:</h3>
 
                     <div>
 
-                        <a>#nature</a>
-                        <a>#ferrari</a>
-                        <a>#fantasy</a>
-                        <a>#city</a>
-                        <a>#landscape</a>
+                        <NavBarTagsComponent tags={tags} />
 
                     </div>
 
@@ -68,15 +69,15 @@ const NavBar = ({tags}) => {
                         <div className={styles.dropdowncontent}>
                             <Link href="/upload"><p className={styles.item}>Upload</p></Link>
                             <Link
-                            href={{
-                                pathname: `profile/${user.uid}`,
-                                query: {
-                                    profile: user.uid
-                                }
-                            }}
-                        >
-                            <p className={styles.item}>My profile</p>
-                        </Link>
+                                href={{
+                                    pathname: `profile/${user.uid}`,
+                                    query: {
+                                        profile: user.uid
+                                    }
+                                }}
+                            >
+                                <p className={styles.item}>My profile</p>
+                            </Link>
                             <a className={styles.item} onClick={signOutFunc}>Log Out</a>
                         </div>
                     </div>
@@ -84,7 +85,7 @@ const NavBar = ({tags}) => {
 
             </div>
 
-            <a className={styles.mobileMenuIcon}><img src="/menu.png"/></a>
+            <a className={styles.mobileMenuIcon}><img src="/menu.png" /></a>
 
             <div className={styles.sideMenu}>
 
@@ -116,7 +117,7 @@ const NavBar = ({tags}) => {
                             <a className={styles.sideMenuItem_2} onClick={signOutFunc}>Log Out</a>
 
                         </div>
-                            
+
                     }
 
                 </div>
@@ -125,21 +126,6 @@ const NavBar = ({tags}) => {
 
         </div>
     );
-}
-
-export const getStaticProps = async () => {
-
-    // get categories from db
-    const q = query(collection(db, "tags"));
-    const fetchedDocs = await getDocs(q)
-
-    const tags = fetchedDocs.docs.map((doc) => {
-        return {
-            ...doc.data().tags,
-        };
-    });
-
-    return { props: { tags: tags } };
 }
 
 export default NavBar;
