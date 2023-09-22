@@ -148,49 +148,53 @@ const ImgComponent = ({ images }) => {
         getData()
     }, [user])
 
-    return images.map(image => {
+    if (images) {
 
-        return <>
 
-            <div className={styles.card}>
+        return images.map(image => {
 
-                <img src={image.displayUrl} />
+            return <>
 
-                <div className={styles.imgOverlap}>
+                <div className={styles.card}>
 
-                    <a href={image.downloadUrl} className={styles.dwnld}><img src='/download.png' /></a>
-                    <Link key={image.uid}
-                        href={{
-                            pathname: `browse/${image.uid} `,
-                            query: {
-                                displayUrl: image.displayUrl,
-                                downloadUrl: image.downloadUrl,
-                                uploaderEmail: image.uploadedBy.email,
-                                hashtags: image.hashtags,
-                                likes: image.likes,
-                                reports: image.reports
-                            }
-                        }}
-                    >
-                        <img src='/fullscreen.png' />
-                    </Link>
+                    <img src={image.displayUrl} />
 
-                    {/* display like or report buttons if they are not already pressed and user exists */}
-                    {user != null ? likedImgs.includes(image.uid) ?
-                        <></> :
-                        <a onClick={() => imgLiked(image)} className={styles.like}><img src='/like.png' /></a> : <></>}
-                    {user != null ? reportedImgs.includes(image.uid) ?
-                        <></> :
-                        <a onClick={() => imgReported(image)} className={styles.rprt}><img src='/report.png' /></a> : <></>}
+                    <div className={styles.imgOverlap}>
+
+                        <a href={image.downloadUrl} className={styles.dwnld}><img src='/download.png' /></a>
+                        <Link key={image.uid}
+                            href={{
+                                pathname: `browse/${image.uid} `,
+                                query: {
+                                    displayUrl: image.displayUrl,
+                                    downloadUrl: image.downloadUrl,
+                                    uploaderEmail: image.uploadedBy.email,
+                                    hashtags: image.hashtags,
+                                    likes: image.likes,
+                                    reports: image.reports
+                                }
+                            }}
+                        >
+                            <img src='/fullscreen.png' />
+                        </Link>
+
+                        {/* display like or report buttons if they are not already pressed and user exists */}
+                        {user != null ? likedImgs.includes(image.uid) ?
+                            <></> :
+                            <a onClick={() => imgLiked(image)} className={styles.like}><img src='/like.png' /></a> : <></>}
+                        {user != null ? reportedImgs.includes(image.uid) ?
+                            <></> :
+                            <a onClick={() => imgReported(image)} className={styles.rprt}><img src='/report.png' /></a> : <></>}
+
+                    </div>
+
 
                 </div>
 
+            </>;
 
-            </div>
-
-        </>;
-
-    });
+        });
+    }
 }
 
 export default ImgComponent;
