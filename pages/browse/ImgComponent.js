@@ -10,11 +10,9 @@ import { useState, useEffect } from 'react';
 
 const ImgComponent = ({ images }) => {
 
-    const _images = images
     const [user] = useAuthState(auth)
     const [likedImgs, setLikedImgs] = useState([])
     const [reportedImgs, setReportedImgs] = useState([])
-
 
     // getting data from user so we know what he liked or reported already
     const getData = async () => {
@@ -150,58 +148,49 @@ const ImgComponent = ({ images }) => {
         getData()
     }, [user])
 
+    return images.map(image => {
 
-    if(_images){
-    
-        return (
+        return <>
 
-            _images.map(image => {
+            <div className={styles.card}>
 
-                return (<>
+                <img src={image.displayUrl} />
 
-                    <div className={styles.card}>
+                <div className={styles.imgOverlap}>
 
-                        <img src={image.displayUrl} />
+                    <a href={image.downloadUrl} className={styles.dwnld}><img src='/download.png' /></a>
+                    <Link key={image.uid}
+                        href={{
+                            pathname: `browse/${image.uid} `,
+                            query: {
+                                displayUrl: image.displayUrl,
+                                downloadUrl: image.downloadUrl,
+                                uploaderEmail: image.uploadedBy.email,
+                                hashtags: image.hashtags,
+                                likes: image.likes,
+                                reports: image.reports
+                            }
+                        }}
+                    >
+                        <img src='/fullscreen.png' />
+                    </Link>
 
-                        <div className={styles.imgOverlap}>
+                    {/* display like or report buttons if they are not already pressed and user exists */}
+                    {user != null ? likedImgs.includes(image.uid) ?
+                        <></> :
+                        <a onClick={() => imgLiked(image)} className={styles.like}><img src='/like.png' /></a> : <></>}
+                    {user != null ? reportedImgs.includes(image.uid) ?
+                        <></> :
+                        <a onClick={() => imgReported(image)} className={styles.rprt}><img src='/report.png' /></a> : <></>}
 
-                            <a href={image.downloadUrl} className={styles.dwnld}><img src='/download.png' /></a>
-                            <Link
-                                href={{
-                                    pathname: `browse/${image.uid} `,
-                                    query: {
-                                        displayUrl: image.displayUrl,
-                                        downloadUrl: image.downloadUrl,
-                                        uploaderEmail: image.uploadedBy.email,
-                                        hashtags: image.hashtags,
-                                        likes: image.likes,
-                                        reports: image.reports
-                                    }
-                                }}
-                            >
-                                <a><img src='/fullscreen.png' /></a>
-                            </Link>
-
-                            {/* display like or report buttons if they are not already pressed and user exists */}
-                            {user != null ? likedImgs.includes(image.uid) ? 
-                                <></> : 
-                                <a onClick={() => imgLiked(image)} className={styles.like}><img src='/like.png' /></a> : <></>}
-                            {user != null ? reportedImgs.includes(image.uid) ? 
-                                <></> : 
-                                <a onClick={() => imgReported(image)} className={styles.rprt}><img src='/report.png' /></a> : <></>}
-
-                        </div>
+                </div>
 
 
-                    </div>
+            </div>
 
-                </>)
+        </>;
 
-            })
-
-        )
-    }
-    
+    });
 }
 
 export default ImgComponent;

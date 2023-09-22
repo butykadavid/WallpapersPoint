@@ -2,6 +2,8 @@ import styles from "../../styles/AboutPage.module.css";
 
 import NavBar from "../../components/NavBar";
 
+import Image from "next/image"
+
 import { db } from "../../public/firebase";
 import { query, getDocs, collection, limit } from 'firebase/firestore';
 
@@ -9,7 +11,7 @@ export default function AboutPage({ tags }){
   return (
     <>
 
-      <NavBar tags={tags} />
+      <NavBar tags={tags} active={"ABOUT"}/>
 
       <div className={styles.content}>
 
@@ -34,7 +36,7 @@ export default function AboutPage({ tags }){
 
         <div className={styles.myPicDiv}>
 
-          <img className={styles.myPic} src="butyka.jpg" />
+          <Image className={styles.myPic} src="/butyka.jpg" width={250} height={250} alt="Picture of David Butyka the creator of this page."></Image>
           <h1 className={styles.myName}>Dávid Butyka</h1>
 
           <div className={styles.socialDiv}>

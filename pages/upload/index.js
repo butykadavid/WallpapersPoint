@@ -13,8 +13,8 @@ import { query, getDocs, collection, where, addDoc, doc, updateDoc, arrayUnion, 
 
 export default function UploadPage({tags}) {
 
-    const file = null;
-    const metadata = [];
+    var file = null;
+    var metadata = [];
     var hashtags = [];
     // span to display selected file's name
     const fileChosen = createRef()

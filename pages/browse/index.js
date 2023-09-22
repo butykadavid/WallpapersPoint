@@ -13,7 +13,7 @@ const browsePage = ({ images, tags }) => {
 
         <div className={styles.container}>
 
-            <NavBar tags={tags}/>
+            <NavBar tags={tags} active={"BROWSE"}/>
 
             <div className={styles.imgContainer}>
 

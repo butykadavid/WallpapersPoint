@@ -5,25 +5,22 @@ const LabelComponent = ({tags}) => {
 
     if(tags){
 
-        return (
+        return tags.map(tag => {
 
-            tags.map(tag => {
-
-                return (
-
-                    // clicking on a category is the same as searching for that word
-                    <Link key={tag} href={{
+            return (
+                // clicking on a category is the same as searching for that word
+                <Link
+                    key={tag}
+                    href={{
                         pathname: '/browse',
                         query: { search: tag }
-                    }}>
-                        <p>{tag}</p>
-                    </Link >
+                    }}
+                    legacyBehavior>
+                    <p>{tag}</p>
+                </Link >
+            );
 
-                )
-
-            })
-
-        );
+        });
         
     }
 

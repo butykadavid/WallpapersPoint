@@ -16,7 +16,7 @@ export default function categoriesPage({ cats, tags }) {
 
         <div className={styles.container}>
 
-            <NavBar tags={tags} />
+            <NavBar tags={tags} active={"CATEGORIES"} />
 
             <h1>Categories</h1>
 

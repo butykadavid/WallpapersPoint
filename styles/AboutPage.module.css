@@ -70,11 +70,11 @@
 
 .socialDiv a img{
     width: 30px;
-    transition: 2.5s ease-in-out;
+    transition: 0.25s ease-in-out;
 }
 
 .socialDiv a:hover img{
-    transform: rotateZ(360deg);
+    transform: scale(1.2);
 }
 
 @media only screen and (max-width: 900px) {
@@ -93,7 +93,7 @@
     .content{
         height: fit-content;
 
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 
     .textBox{

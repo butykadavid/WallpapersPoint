@@ -3,8 +3,6 @@ import { getAuth, signInWithPopup, signOut, GoogleAuthProvider } from 'firebase/
 import { getFirestore, query, getDocs, collection, where, addDoc, snapshotEqual, } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes } from 'firebase/storage'
 
-import { v4 as uuidv4 } from 'uuid'
-
 const firebaseConfig = {
     apiKey: "AIzaSyANaFQxWdigLqQIGnhdj5JY6BKFK8-7ByQ",
     authDomain: "wallpaperspoint-36d6c.firebaseapp.com",

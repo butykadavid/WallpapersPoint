@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { auth, signInWithGoogle, signOutFunc } from "../public/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-const NavBar = ({ tags }) => {
+const NavBar = ({ tags, active }) => {
 
     const [user] = useAuthState(auth)
     const router = useRouter()
@@ -27,7 +27,6 @@ const NavBar = ({ tags }) => {
     }
 
     return (
-
         <div className={styles.navBar}>
 
             <div className={styles.search}>
@@ -55,10 +54,11 @@ const NavBar = ({ tags }) => {
 
             <div className={styles.menu}>
 
-                <Link href="/">Home</Link>
-                <Link href="/browse">Browse</Link>
-                <Link href="/categories">Categories</Link>
-                <Link href="/about">About</Link>
+                {/* applying style for active menuitem */}
+                {active == "HOME" ? <Link href="/" className={styles.active}>Home</Link> : <Link href="/">Home</Link>}
+                {active == "BROWSE" ? <Link href="/browse" className={styles.active}>Browse</Link> : <Link href="/browse">Browse</Link>}
+                {active == "CATEGORIES" ? <Link href="/categories" className={styles.active}>Categories</Link> : <Link href="/categories">Categories</Link>}
+                {active == "ABOUT" ? <Link href="/about" className={styles.active}>About</Link> : <Link href="/about">About</Link>}
 
                 {/* if user is signed in display user menu */}
                 {user == null || user == [] ?
@@ -67,7 +67,7 @@ const NavBar = ({ tags }) => {
                     <div className={styles.dropdown}>
                         <a className={styles.loggedIn}>{user.displayName.split(' ')[0]} ▼</a>
                         <div className={styles.dropdowncontent}>
-                            <Link href="/upload"><p className={styles.item}>Upload</p></Link>
+                            <Link href="/upload" legacyBehavior><p className={styles.item}>Upload</p></Link>
                             <Link
                                 href={{
                                     pathname: `profile/${user.uid}`,
@@ -75,7 +75,7 @@ const NavBar = ({ tags }) => {
                                         profile: user.uid
                                     }
                                 }}
-                            >
+                                legacyBehavior>
                                 <p className={styles.item}>My profile</p>
                             </Link>
                             <a className={styles.item} onClick={signOutFunc}>Log Out</a>
@@ -91,10 +91,10 @@ const NavBar = ({ tags }) => {
 
                 <div>
 
-                    <Link href="/"><p className={styles.sideMenuItem}>Home</p></Link>
-                    <Link href="/browse"><p className={styles.sideMenuItem}>Browse</p></Link>
-                    <Link href="/categories"><p className={styles.sideMenuItem}>Categories</p></Link>
-                    <Link href="/about"><p className={styles.sideMenuItem}>About</p></Link>
+                    <Link href="/" legacyBehavior><p className={styles.sideMenuItem}>Home</p></Link>
+                    <Link href="/browse" legacyBehavior><p className={styles.sideMenuItem}>Browse</p></Link>
+                    <Link href="/categories" legacyBehavior><p className={styles.sideMenuItem}>Categories</p></Link>
+                    <Link href="/about" legacyBehavior><p className={styles.sideMenuItem}>About</p></Link>
 
                     {/* if user is signed in display user menu */}
                     {user == null || user == [] ?
@@ -103,7 +103,7 @@ const NavBar = ({ tags }) => {
                         <div>
 
                             <p className={styles.sideMenuUserName}>{user.displayName.split(' ')[0]}</p>
-                            <Link href="/upload"><p className={styles.sideMenuItem_2}>Upload</p></Link>
+                            <Link href="/upload" legacyBehavior><p className={styles.sideMenuItem_2}>Upload</p></Link>
                             <Link
                                 href={{
                                     pathname: `profile/${user.uid}`,
@@ -111,7 +111,7 @@ const NavBar = ({ tags }) => {
                                         profile: user.uid
                                     }
                                 }}
-                            >
+                                legacyBehavior>
                                 <p className={styles.sideMenuItem_2}>My profile</p>
                             </Link>
                             <a className={styles.sideMenuItem_2} onClick={signOutFunc}>Log Out</a>

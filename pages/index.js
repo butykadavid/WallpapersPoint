@@ -13,7 +13,6 @@ import { query, getDocs, collection, limit, orderBy } from 'firebase/firestore';
 export default function Home({ bottomImages, bg, tags }) {
 
   return (
-
     // div wrapping whole page with dynamic gackground
     <div className={styles.container} style={{
       background: `linear-gradient(rgba(0, 255, 172, 0.5), rgba(0, 255, 253, 0.5)), url(${bg.displayUrl})`,
@@ -27,7 +26,7 @@ export default function Home({ bottomImages, bg, tags }) {
 
       </Head>
 
-      <NavBar tags={tags} />
+      <NavBar tags={tags} active={"HOME"}/>
 
       <div className={styles.titleContainer}>
 
@@ -48,7 +47,7 @@ export default function Home({ bottomImages, bg, tags }) {
             }
           }}
         >
-          <a>Get background</a>
+          Get background
         </Link>
 
       </div>
@@ -67,8 +66,7 @@ export default function Home({ bottomImages, bg, tags }) {
       </div>
 
     </div >
-
-  )
+  );
 
 }
 

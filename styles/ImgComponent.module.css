@@ -24,12 +24,13 @@
 .card .imgOverlap{
     position: absolute;
     
-    display: none;
+    display: block;
+
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 
-    transition: 0.25s ease-in-out;
+    opacity: 0;
 }
 
 .card .imgOverlap a{
@@ -74,6 +75,8 @@
 
 .card:hover .imgOverlap{
     display: flex;
+
+    opacity: 1;
 }
 
 .card:hover .imgOverlap a {
